@@ -6,7 +6,7 @@ from django.urls import reverse
 class Product(models.Model):
     title = models.CharField('Name', max_length=200)
     supplier = models.ForeignKey('Supplier', on_delete=models.SET_NULL, null=True)
-    summary = models.TextField('Summary', max_length=1000, help_text='Trumpas knygos aprašymas')
+    summary = models.TextField('Summary', max_length=1000, help_text='Product information')
     price = models.CharField('Price, Eur', max_length=5, null=True)
     quantity = models.CharField('Quantity, pcs', max_length=5, null=True)
 
@@ -52,14 +52,23 @@ class Client(models.Model):
         return f'{self.client_name}, {self.address}'
 
 
+
 class Sale(models.Model):
     order_No = models.CharField('Order_No', max_length=200)
+    product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True)
+    quantity = models.CharField('Quantity, pcs', max_length=5, null=True)
+    client_name = models.ForeignKey('Client', on_delete=models.SET_NULL, null=True)
+
+    class Meta:
+        ordering = ['order_No']
 
     def __str__(self):
         return str(self.order_No)
 
     def get_absolute_url(self):
         return reverse('sale-detail', args=[str(self.id)])
+
+
 
 
 class Expenses(models.Model):
@@ -80,7 +89,7 @@ class Manager(models.Model):
 
 
     class Meta:
-        ordering = ['last_name', 'first_name']
+        ordering = ['first_name', 'last_name']
 
     def get_absolute_url(self):
         """Returns the url to access a particular author instance."""
