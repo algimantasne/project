@@ -36,20 +36,20 @@ class Supplier(models.Model):
 
 
 class Client(models.Model):
-    first_name = models.CharField('First name', max_length=100)
-    last_name = models.CharField('Last name', max_length=100)
+    client_name = models.CharField('Name', max_length=100, null=True)
     address = models.CharField('Address', max_length=100, null=True)
     phone = models.CharField('Phone', max_length=12, null=True)
+    manager = models.ForeignKey('Manager', on_delete=models.SET_NULL, null=True)
 
     class Meta:
-        ordering = ['last_name', 'first_name']
+        ordering = ['client_name']
 
     def get_absolute_url(self):
         """Returns the url to access a particular author instance."""
         return reverse('client-detail', args=[str(self.id)])
 
     def __str__(self):
-        return f'{self.last_name} {self.first_name}, {self.address}'
+        return f'{self.client_name}, {self.address}'
 
 
 class Sale(models.Model):
@@ -70,3 +70,21 @@ class Expenses(models.Model):
 
     def get_absolute_url(self):
         return reverse('expenses-detail', args=[str(self.id)])
+
+
+class Manager(models.Model):
+    first_name = models.CharField('First name', max_length=100)
+    last_name = models.CharField('Last name', max_length=100)
+    address = models.CharField('Address', max_length=100, null=True)
+    phone = models.CharField('Phone', max_length=12, null=True)
+
+
+    class Meta:
+        ordering = ['last_name', 'first_name']
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular author instance."""
+        return reverse('manager-detail', args=[str(self.id)])
+
+    def __str__(self):
+        return f'{self.last_name} {self.first_name}, {self.address}, {self.phone}'
