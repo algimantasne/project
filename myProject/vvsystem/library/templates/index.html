@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>VV SYSTEM</h1>
+  <p>Hello!</p>
+  <p>We currently have:</p>
+  <ul>
+    <li><strong>Products:</strong> {{ num_product }}</li>
+    <li><strong>Suppliers:</strong> {{ num_supplier }}</li>
+    <li><strong>Clients:</strong> {{ num_client }}</li>
+    <li><strong>Managers:</strong> {{ num_manager }}</li>
+    <li><strong>Sales:</strong> {{ num_sale }}</li>
+    <li><strong>Expenses:</strong> {{ num_expenses }}</li>
+  </ul>
+{% endblock %}
