@@ -23,3 +23,23 @@ urlpatterns = [
     path('library/', include('library.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+
+
+# # Šiuo metu mūsų veikiančio puslapio URL adresas yra 127.0.0.1:8000/library.
+# # Jeigu neketiname prie to paties projekto rišti daugiau aplikacijų, galime
+# # padaryti nukreipimą iš /library į /. Tam dar kartą atsidarysime /mysite/urls.py
+# # ir perrašysime taip:
+#
+# from django.contrib import admin
+# from django.urls import path, include
+# from django.conf import settings
+# from django.conf.urls.static import static
+# from django.views.generic import RedirectView
+#
+# urlpatterns = [
+#     path('library/', include('library.urls')),
+#     path('admin/', admin.site.urls),
+#     path('', RedirectView.as_view(url='library/', permanent=True)),
+# ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
