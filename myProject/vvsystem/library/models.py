@@ -9,6 +9,8 @@ class Product(models.Model):
     summary = models.TextField('Summary', max_length=1000, help_text='Product information')
     price = models.CharField('Price, Eur', max_length=5, null=True)
     quantity = models.CharField('Quantity, pcs', max_length=5, null=True)
+    description = models.TextField('Description', max_length=2000, default='')
+
 
 
     def __str__(self):
@@ -23,6 +25,9 @@ class Product(models.Model):
 
 class Supplier(models.Model):
     name = models.CharField('Name', max_length=100)
+    description = models.TextField('Description', max_length=2000, default='')
+
+
 
     class Meta:
         ordering = ['name']

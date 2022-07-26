@@ -1,6 +1,12 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Product, Supplier, Client, Sale, Expenses, Manager
+from django.shortcuts import render, get_object_or_404
+
+
+def supplier(request, supplier_id):
+    single_supplier = get_object_or_404(Supplier, pk=supplier_id)
+    return render(request, 'supplier.html', {'author': single_supplier})
+
 
 
 def index(request):
@@ -32,3 +38,14 @@ def index(request):
 
     # renderiname index.html, su duomenimis kintamąjame context
     return render(request, 'index.html', context=context)
+
+
+def suppliers(request):
+    suppliers = Supplier.objects.all()
+    context = {
+        'suppliers': suppliers
+    }
+    print(suppliers)
+    return render(request, 'suppliers.html', context=context)
+
+
