@@ -41,6 +41,8 @@ class Client(models.Model):
     phone = models.CharField('Phone', max_length=12, null=True)
     manager = models.ForeignKey('Manager', on_delete=models.SET_NULL, null=True)
 
+
+
     class Meta:
         ordering = ['client_name']
 
@@ -82,18 +84,18 @@ class Expenses(models.Model):
 
 
 class Manager(models.Model):
-    first_name = models.CharField('First name', max_length=100)
-    last_name = models.CharField('Last name', max_length=100)
+    manager_name = models.CharField('Manager name', max_length=100, null=True)
+
     address = models.CharField('Address', max_length=100, null=True)
     phone = models.CharField('Phone', max_length=12, null=True)
 
 
     class Meta:
-        ordering = ['first_name', 'last_name']
+        ordering = ['manager_name']
 
     def get_absolute_url(self):
         """Returns the url to access a particular author instance."""
         return reverse('manager-detail', args=[str(self.id)])
 
     def __str__(self):
-        return f'{self.last_name} {self.first_name}, {self.address}, {self.phone}'
+        return f'{self.manager_name}, {self.address}, {self.phone}'
