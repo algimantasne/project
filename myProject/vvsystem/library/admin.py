@@ -10,6 +10,9 @@ class ProductAdmin(admin.ModelAdmin):
 class ClientAdmin(admin.ModelAdmin):
     list_display = ('client_name', 'manager')
 
+class SupplierAdmin(admin.ModelAdmin):
+    list_display = ('name', 'display_products')
+
 
 admin.site.register(Supplier)
 admin.site.register(Product, ProductAdmin)

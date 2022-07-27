@@ -1,16 +1,16 @@
 from django.db import models
 from django.urls import reverse
 
+
 # Create your models here.
 
 class Product(models.Model):
-    title = models.CharField('Name', max_length=200)
-    supplier = models.ForeignKey('Supplier', on_delete=models.SET_NULL, null=True)
+    title = models.CharField('Product', max_length=200)
+    supplier = models.ForeignKey('Supplier', on_delete=models.SET_NULL, related_name='suppliers', null=True)
     summary = models.TextField('Summary', max_length=1000, help_text='Product information')
     price = models.CharField('Price, Eur', max_length=5, null=True)
     quantity = models.CharField('Quantity, pcs', max_length=5, null=True)
     description = models.TextField('Description', max_length=2000, default='')
-
 
 
     def __str__(self):
@@ -27,7 +27,10 @@ class Supplier(models.Model):
     name = models.CharField('Name', max_length=100)
     description = models.TextField('Description', max_length=2000, default='')
 
+    def display_products(self):
+        return ', '.join(product.title for product in self.products.all()[:3])
 
+    display_products.short_description = 'Products'
 
     class Meta:
         ordering = ['name']
