@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+import uuid
 
 
 # Create your models here.
@@ -7,14 +8,17 @@ from django.urls import reverse
 class Product(models.Model):
     title = models.CharField('Product', max_length=200)
     supplier = models.ForeignKey('Supplier', on_delete=models.SET_NULL, related_name='suppliers', null=True)
-    summary = models.TextField('Summary', max_length=1000, help_text='Product information')
+    summary = models.TextField('SumQuantitymary', max_length=1000, help_text='Product information')
     price = models.CharField('Price, Eur', max_length=5, null=True)
-    quantity = models.CharField('Quantity, pcs', max_length=5, null=True)
-    description = models.TextField('Description', max_length=2000, default='')
+    quantity = models.CharField(', pcs', max_length=5, null=True)
 
+    def display_quantity(self):
+        return ', '.join(quantity.name for quantity in self.quantity.all()[:3])
+
+    display_quantity.short_description = 'Quantity'
 
     def __str__(self):
-        return str(self.title)
+        return self.title
 
     def get_absolute_url(self):
         """Nurodo konkretaus aprašymo galinį adresą"""
@@ -39,7 +43,7 @@ class Supplier(models.Model):
         return reverse('supplier-detail', args=[str(self.id)])
 
     def __str__(self):
-        return str(self.name)
+        return self.name
 
 
 
@@ -107,3 +111,33 @@ class Manager(models.Model):
 
     def __str__(self):
         return f'{self.manager_name}, {self.address}, {self.phone}'
+
+
+
+class ProductInstance(models.Model):
+    """Modelis, aprašantis konkrečios Product būseną"""
+    product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True)
+
+    LOAN_STATUS = (
+        ('a', 'In stock'),
+        ('p', 'Reserved'),
+        ('g', 'Not available for sale'),
+    )
+
+    status = models.CharField(
+        max_length=1,
+        choices=LOAN_STATUS,
+        blank=True,
+        default='a',
+        help_text='Statusas',
+    )
+    #
+    # class Meta:
+    #     ordering = ['due_back']
+
+    def __str__(self):
+        return f'{self.product.title}'
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular author instance."""
+        return reverse('productinstance-detail', args=[str(self.id)])

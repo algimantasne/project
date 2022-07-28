@@ -1,7 +1,7 @@
 # from django.http import HttpResponse
 from .models import Product, Supplier, Client, Sale, Expenses, Manager
 from django.shortcuts import render, get_object_or_404
-
+from django.views import generic
 
 
 
@@ -45,3 +45,11 @@ def supplier(request, supplier_id):
     return render(request, 'supplier.html', {'supplier': single_supplier})
 
 
+class ProductListView(generic.ListView):
+    model = Product
+    template_name = 'product_list.html'
+
+
+class ProductDetailView(generic.DetailView):
+    model = Product
+    template_name = 'product_detail.html'
