@@ -7,7 +7,7 @@
     <p>{{ supplier.description }}</p>
     <hr/>
     </br>
-    <h5>We have {{ supplier.name }} products:</h5>
+    <h5>{{ supplier.name }} products:</h5>
     {% for i in supplier.products.all %}
        <li>{{ i.title }}</li>
     {% endfor %}
