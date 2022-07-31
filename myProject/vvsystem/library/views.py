@@ -2,6 +2,8 @@
 from .models import Product, Supplier, Client, Sale, Expenses, Manager
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
+from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 
@@ -9,13 +11,9 @@ def index(request):
     # Suskaičiuokime keletą pagrindinių objektų
     num_products = Product.objects.all().count()
     num_suppliers = Supplier.objects.all().count()
-    # Kiek yra Client
     num_clients = Client.objects.count()
-    # Kiek yra Manager
     num_managers = Manager.objects.count()
-    # Kiek yra Sale
     num_sales = Sale.objects.count()
-    # Kiek yra Sale
     num_expenses = Expenses.objects.count()
 
     # perduodame informaciją į šabloną žodyno pavidale:
@@ -32,13 +30,23 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 
+# def suppliers(request):
+#
+#     suppliers = Supplier.objects.all()
+#     context = {
+#         'suppliers': suppliers
+#     }
+#     print(suppliers)
+#     return render(request, 'suppliers.html', context=context)
 def suppliers(request):
-    suppliers = Supplier.objects.all()
+    paginator = Paginator(Supplier.objects.all(), 10)
+    page_number = request.GET.get('page')
+    paged_suppliers = paginator.get_page(page_number)
     context = {
-        'suppliers': suppliers
+        'suppliers': paged_suppliers
     }
-    print(suppliers)
     return render(request, 'suppliers.html', context=context)
+
 
 def supplier(request, supplier_id):
     single_supplier = get_object_or_404(Supplier, pk=supplier_id)
@@ -47,9 +55,32 @@ def supplier(request, supplier_id):
 
 class ProductListView(generic.ListView):
     model = Product
+    paginate_by = 10
     template_name = 'product_list.html'
 
 
 class ProductDetailView(generic.DetailView):
     model = Product
     template_name = 'product_detail.html'
+
+
+from django.db.models import Q
+
+def search(request):
+
+    query = request.GET.get('query')
+    search_results = Product.objects.filter(Q(title__icontains=query) | Q(summary__icontains=query))
+    return render(request, 'search.html', {'products': search_results, 'query': query})
+
+
+def clients(request):
+    clients = Client.objects.all()
+    context = {
+        'clients': clients
+    }
+    print(clients)
+    return render(request, 'clients.html', context=context)
+
+def client(request, client_id):
+    single_client = get_object_or_404(Client, pk=client_id)
+    return render(request, 'client.html', {'client': single_client})

@@ -7,10 +7,11 @@ import uuid
 
 class Product(models.Model):
     title = models.CharField('Product', max_length=200)
-    supplier = models.ForeignKey('Supplier', on_delete=models.SET_NULL, related_name='suppliers', null=True)
-    summary = models.TextField('SumQuantitymary', max_length=1000, help_text='Product information')
+    supplier = models.ForeignKey('Supplier', on_delete=models.SET_NULL, related_name='products', null=True)
+    summary = models.TextField('Summary', max_length=1000, help_text='Product information')
     price = models.CharField('Price, Eur', max_length=5, null=True)
-    quantity = models.CharField(', pcs', max_length=5, null=True)
+    quantity = models.CharField('Quantity, pcs', max_length=5, null=True)
+    cover = models.ImageField('Cover', upload_to='covers', null=True)
 
     def display_quantity(self):
         return ', '.join(quantity.name for quantity in self.quantity.all()[:3])
@@ -52,8 +53,6 @@ class Client(models.Model):
     address = models.CharField('Address', max_length=100, null=True)
     phone = models.CharField('Phone', max_length=12, null=True)
     manager = models.ForeignKey('Manager', on_delete=models.SET_NULL, null=True)
-
-
 
     class Meta:
         ordering = ['client_name']
