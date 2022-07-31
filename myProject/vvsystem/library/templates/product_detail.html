@@ -4,22 +4,18 @@
   <h1>{{ product.title }}</h1>
 
   <p><strong>Supplier:</strong> <a href="{% url 'supplier' product.supplier.pk %}">{{ product.supplier }}</a></p>
+  <p><strong>Price:</strong> {{ product.price }} EUR</p>
   <p><strong>Summary:</strong> {{ product.summary }}</p>
-  <p><strong>Price:</strong> {{ product.price }}</p>
   <p><strong>Quantity:</strong> {{ product.quantity }}</p>
 
   <div style="margin-left:20px;margin-top:20px">
-    <h4>Copy:</h4>
+    <h4>STATUS:</h4>
 
     {% for copy in product.productinstance_set.all %}
-      <hr>
+<!--      <hr>-->
       <p class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
         {{ copy.get_status_display }}
       </p>
-      {% if copy.status != 'a' %}
-        <p><strong>Bus grąžinta:</strong> {{ copy.due_back }}</p>
-      {% endif %}
-      <p class="text-muted"><strong>Id:</strong> {{ copy.id }}</p>
     {% endfor %}
   </div>
 {% endblock %}

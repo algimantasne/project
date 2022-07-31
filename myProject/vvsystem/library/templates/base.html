@@ -16,12 +16,18 @@
       {% block sidebar %}
         <ul class="sidebar-nav">
           <li><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="">All Products</a></li>
-          <li><a href="">Suppliers</a></li>
-          <li><a href="">Clients</a></li>
+          <li><a href="{% url 'products' %}">Products</a></li>
+          <li><a href="{% url 'suppliers' %}">Suppliers</a></li>
+          <li><a href="{% url 'clients' %}">Clients</a></li>
           <li><a href="">Managers</a></li>
           <li><a href="">Sales</a></li>
           <li><a href="">Expensess</a></li>
+          <hr/>
+          <li>
+              <form action="{% url 'search' %}" method="get" class="form-inline my-2 my-md-0">
+              <input name="query" class="form-control" type="text" placeholder="Search">
+              </form>
+          </li>
         </ul>
      {% endblock %}
       </div>
