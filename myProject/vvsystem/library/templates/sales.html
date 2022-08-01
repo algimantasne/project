@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Sales</h1>
+  <p>Sales:</p>
+  {% for a in sales %}
+    <li><a href="{% url 'sale' a.id %}">{{a.order_No}}</a></li>
+  {% endfor %}
+{% endblock %}

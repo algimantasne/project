@@ -19,9 +19,9 @@
           <li><a href="{% url 'products' %}">Products</a></li>
           <li><a href="{% url 'suppliers' %}">Suppliers</a></li>
           <li><a href="{% url 'clients' %}">Clients</a></li>
-          <li><a href="">Managers</a></li>
-          <li><a href="">Sales</a></li>
-          <li><a href="">Expensess</a></li>
+          <li><a href="{% url 'managers' %}">Managers</a></li>
+          <li><a href="{% url 'sales' %}">Sales</a></li>
+          <li><a href="{% url 'expenses' %}">Expenses</a></li>
           <hr/>
           <li>
               <form action="{% url 'search' %}" method="get" class="form-inline my-2 my-md-0">

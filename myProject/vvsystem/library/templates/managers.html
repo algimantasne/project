@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Managers</h1>
+  <p>Managers:</p>
+  {% for a in managers %}
+    <li><a href="{% url 'manager' a.id %}">{{a.manager_name}}</a></li>
+  {% endfor %}
+{% endblock %}
