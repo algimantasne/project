@@ -11,5 +11,11 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('clients/', views.clients, name='clients'),
     path('clients/<int:client_id>', views.client, name='client'),
+    path('managers/', views.managers, name='managers'),
+    path('managers/<int:manager_id>', views.manager, name='manager'),
+    path('sales/', views.sales, name='sales'),
+    path('sales/<int:sale_id>', views.sale, name='sale'),
+    path('expenses/', views.expenses, name='expenses'),
+    path('expenses/<int:expense_id>', views.expense, name='expense'),
 
 ]

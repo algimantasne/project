@@ -1,5 +1,5 @@
 # from django.http import HttpResponse
-from .models import Product, Supplier, Client, Sale, Expenses, Manager
+from .models import Product, Supplier, Client, Sale, Expense, Manager
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.core.paginator import Paginator
@@ -14,7 +14,7 @@ def index(request):
     num_clients = Client.objects.count()
     num_managers = Manager.objects.count()
     num_sales = Sale.objects.count()
-    num_expenses = Expenses.objects.count()
+    num_expenses = Expense.objects.count()
 
     # perduodame informaciją į šabloną žodyno pavidale:
     context = {
@@ -84,3 +84,41 @@ def clients(request):
 def client(request, client_id):
     single_client = get_object_or_404(Client, pk=client_id)
     return render(request, 'client.html', {'client': single_client})
+
+def managers(request):
+    managers = Manager.objects.all()
+    context = {
+        'managers': managers
+    }
+    print(managers)
+    return render(request, 'managers.html', context=context)
+
+def manager(request, manager_id):
+    single_manager = get_object_or_404(Manager, pk=manager_id)
+    return render(request, 'manager.html', {'manager': single_manager})
+
+def sales(request):
+    sales = Sale.objects.all()
+    context = {
+        'sales': sales
+    }
+    print(sales)
+    return render(request, 'sales.html', context=context)
+
+def sale(request, sale_id):
+    single_sale = get_object_or_404(Sale, pk=sale_id)
+    return render(request, 'sale.html', {'sale': single_sale})
+
+def expenses(request):
+    expenses = Expense.objects.all()
+    context = {
+        'expenses': expenses
+    }
+    print(expenses)
+    return render(request, 'expenses.html', context=context)
+
+def expense(request, expense_id):
+    single_expense = get_object_or_404(Expense, pk=expense_id)
+    return render(request, 'expense.html', {'expense': single_expense})
+
+

@@ -84,14 +84,14 @@ class Sale(models.Model):
 
 
 
-class Expenses(models.Model):
-    amount = models.CharField('Amount', max_length=7)
+class Expense(models.Model):
+    amount = models.CharField('Monthly expenses', max_length=7)
 
     def __str__(self):
         return str(self.amount)
 
     def get_absolute_url(self):
-        return reverse('expenses-detail', args=[str(self.id)])
+        return reverse('expense-detail', args=[str(self.id)])
 
 
 class Manager(models.Model):
