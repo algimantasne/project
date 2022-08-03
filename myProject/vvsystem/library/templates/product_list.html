@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Products list</h1>
+  <h1>List of products</h1>
   {% if product_list %}
+    <hr/>
+    <br/>
   <ul>
     {% for product in product_list %}
       <li>
@@ -11,7 +13,7 @@
     {% endfor %}
   </ul>
   {% else %}
-    <p>No products.</p>
+    <p>No products</p>
   {% endif %}
   <div class="pagination">
       <span class="step-links">
@@ -31,10 +33,10 @@
       </span>
   </div>
 {% endblock %}
-
+<!---->
 
 <!--{% load static %}-->
-<!--    <h1>Knygų sąrašas</h1></br>-->
+<!--    <h1>List of products</h1></br>-->
 <!--    {% if my_product_list %}-->
 <!--    <div class="row">-->
 <!--      {% for product in my_product_list %}-->
@@ -47,12 +49,12 @@
 <!--            {% endif %}-->
 <!--            <div class="card-body">-->
 <!--              <h6 class="card-subtitle mb-2 text-muted">{{ product.supplier }}</h6>-->
-<!--              <p class="card-text"><a href="{{ book.id }}">{{ product.title }}</a></p>-->
+<!--              <p class="card-text"><a href="{{ product.id }}">{{ product.title }}</a></p>-->
 <!--            </div>-->
 <!--          </div>-->
 <!--        </div>-->
 <!--      {% endfor %}-->
 <!--    </div>-->
 <!--    {% else %}-->
-<!--      <p>Bibliotekoje knygų nėra.</p>-->
+<!--      <p>No products</p>-->
 <!--    {% endif %}-->
