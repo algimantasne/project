@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>SUPPLIERS</h1>
+  <hr/>
+  </br>
+  <p>Suppliers list:</p>
+  {% for a in suppliers %}
+    <li><a href="{% url 'supplier' a.id %}">{{a.name}}</a></li>
+  {% endfor %}
+  <div class="container puslapiai">
+      <nav aria-label="...">
+          {% if suppliers.has_other_pages %}
+              <ul class="pagination pagination-sm justify-content-end">
+                  {% for i in suppliers.paginator.page_range %}
+                      {% if suppliers.number == i %}
+                          <li class="page-item active">
+                              <a class="page-link" href>{{ i }}</a>
+                          </li>
+                      {% else %}
+                          <li class="page-item">
+                              <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                          </li>
+                      {% endif %}
+                  {% endfor %}
+              </ul>
+          {% endif %}
+      </nav>
+  </div>
+{% endblock %}
+
+
+
+

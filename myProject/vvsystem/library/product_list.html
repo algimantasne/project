@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>List of products</h1>
+  {% if product_list %}
+    <hr/>
+    <br/>
+  <ul>
+    {% for product in product_list %}
+      <li>
+        <a href="{{ product.id }}">{{ product.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No products</p>
+  {% endif %}
+  <div class="pagination">
+      <span class="step-links">
+          {% if page_obj.has_previous %}
+              <a href="?page=1">&laquo; first</a>
+              <a href="?page={{ page_obj.previous_page_number }}">back</a>
+          {% endif %}
+
+          <span class="current">
+              {{ page_obj.number }} out of {{ page_obj.paginator.num_pages }}
+          </span>
+
+          {% if page_obj.has_next %}
+              <a href="?page={{ page_obj.next_page_number }}">next</a>
+              <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+          {% endif %}
+      </span>
+  </div>
+{% endblock %}
+<!---->
+
+<!--{% load static %}-->
+<!--    <h1>List of products</h1></br>-->
+<!--    {% if my_product_list %}-->
+<!--    <div class="row">-->
+<!--      {% for product in my_product_list %}-->
+<!--        <div class="col-md-4 d-flex align-items-stretch">-->
+<!--          <div class="card mb-4 shadow-sm">-->
+<!--            {% if product.cover %}-->
+<!--              <img src="{{ product.cover.url }}" class="card-img-top" alt="...">-->
+<!--            {% else %}-->
+<!--              <img src="{% static 'img/no-image.png' %}" class="card-img-top">-->
+<!--            {% endif %}-->
+<!--            <div class="card-body">-->
+<!--              <h6 class="card-subtitle mb-2 text-muted">{{ product.supplier }}</h6>-->
+<!--              <p class="card-text"><a href="{{ product.id }}">{{ product.title }}</a></p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      {% endfor %}-->
+<!--    </div>-->
+<!--    {% else %}-->
+<!--      <p>No products</p>-->
+<!--    {% endif %}-->

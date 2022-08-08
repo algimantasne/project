@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container supplier">
+    <h4>{{ supplier.name }}</h4>
+    <hr/>
+    <p>{{ supplier.description }}</p>
+    <hr/>
+    </br>
+    <h5>{{ supplier.name }} products:</h5>
+    {% for i in supplier.products.all %}
+       <li>{{ i.title }}</li>
+<!--        <li><a href="{{ i.id }}">{{ i.title }}</a></li>-->
+    {% endfor %}
+    </div>
+{% endblock %}
