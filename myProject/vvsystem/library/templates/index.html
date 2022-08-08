@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+
 {% block content %}
-  <h1>BD SYSTEM</h1>
-  <p>Hello!</p>
-  <p>We currently have:</p>
+
+<!--  <h1>BD SYSTEM</h1>-->
+<!--  <p>Hello!</p>-->
+  <p>Currently we have:</p>
   <ul>
     <li><strong>Products:</strong> {{ num_products }}</li>
     <li><strong>Suppliers:</strong> {{ num_suppliers }}</li>
