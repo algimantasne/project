@@ -26,15 +26,15 @@
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon">#</span>
               </button>
-              <a class="navbar-brand" href="{% url 'index' %}">BD SYSTEM</a>
+              <a class="navbar-brand">BD SYSTEM</a>
 
-<!--              <a class="navbar-brand" href="{% url 'index' %}">Home</a>-->
-              <a class="navbar-brand" href="{% url 'products' %}">Products</a>
-              <a class="navbar-brand" href="{% url 'suppliers' %}">Suppliers</a>
-              <a class="navbar-brand" href="{% url 'clients' %}">Clients</a>
-              <a class="navbar-brand" href="{% url 'managers' %}">Managers</a>
-              <a class="navbar-brand" href="{% url 'sales' %}">Sales</a>
-              <a class="navbar-brand" href="{% url 'expenses' %}">Expenses</a>
+              <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+<!--              <a class="navbar-brand" href="{% url 'products' %}">Products</a>-->
+<!--              <a class="navbar-brand" href="{% url 'suppliers' %}">Suppliers</a>-->
+<!--              <a class="navbar-brand" href="{% url 'clients' %}">Clients</a>-->
+<!--              <a class="navbar-brand" href="{% url 'managers' %}">Managers</a>-->
+<!--              <a class="navbar-brand" href="{% url 'sales' %}">Sales</a>-->
+<!--              <a class="navbar-brand" href="{% url 'expenses' %}">Expenses</a>-->
               <form action="{% url 'search' %}" method="get" class="form-inline my-2 my-md-0">
                   <input name="query" class="form-control" type="text" placeholder="Search">
               </form>
@@ -45,25 +45,25 @@
 </head>
 <div class="container-fluid">
     <div class="row">
-<!--        <div class="col-sm-2">-->
-<!--            {% block sidebar %}-->
-<!--            <ul class="sidebar-nav">-->
-<!--                <li><a href="{% url 'index' %}">Home</a></li>-->
-<!--                <li><a href="{% url 'products' %}">Products</a></li>-->
-<!--                <li><a href="{% url 'suppliers' %}">Suppliers</a></li>-->
-<!--                <li><a href="{% url 'clients' %}">Clients</a></li>-->
-<!--                <li><a href="{% url 'managers' %}">Managers</a></li>-->
-<!--                <li><a href="{% url 'sales' %}">Sales</a></li>-->
-<!--                <li><a href="{% url 'expenses' %}">Expenses</a></li>-->
-<!--                <hr/>-->
+        <div class="col-sm-2">
+            {% block sidebar %}
+            <ul class="sidebar-nav">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'products' %}">Products</a></li>
+                <li><a href="{% url 'suppliers' %}">Suppliers</a></li>
+                <li><a href="{% url 'clients' %}">Clients</a></li>
+                <li><a href="{% url 'managers' %}">Managers</a></li>
+                <li><a href="{% url 'sales' %}">Sales</a></li>
+                <li><a href="{% url 'expenses' %}">Expenses</a></li>
+                <hr/>
 <!--                <li>-->
 <!--                    <form action="{% url 'search' %}" method="get" class="form-inline my-2 my-md-0">-->
 <!--                        <input name="query" class="form-control" type="text" placeholder="Search">-->
 <!--                    </form>-->
 <!--                </li>-->
-<!--            </ul>-->
-<!--            {% endblock %}-->
-<!--        </div>-->
+            </ul>
+            {% endblock %}
+        </div>
         <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
     </div>
 </div>
