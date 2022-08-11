@@ -2,11 +2,12 @@
 
 {% block content %}
     <div class="container supplier">
+<br>
     <h4>{{ supplier.name }}</h4>
-    <hr/>
+<hr>
     <p>{{ supplier.description }}</p>
-    <hr/>
-    </br>
+<hr>
+<br>
     <h5>{{ supplier.name }} products:</h5>
     {% for i in supplier.products.all %}
        <li>{{ i.title }}</li>

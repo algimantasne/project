@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
+<br>
   <img src="{{ product.cover.url }}" style="max-width: 300px;">
+<br>
+<br>
   <h1>{{ product.title }}</h1>
+<hr>
 
   <p><strong>Supplier: </strong>{{ product.supplier }}</p>
+<hr>
 <!--  <p><strong>Supplier:</strong> <a href="{% url 'supplier' product.supplier.pk %}">{{ product.supplier }}</a></p>-->
   <p><strong>Price:</strong> {{ product.price }} EUR</p>
+<hr>
   <p><strong>Summary:</strong> {{ product.summary }}</p>
+<hr>
   <p><strong>Quantity:</strong> {{ product.quantity }}</p>
+<hr>
 
   <div style="margin-left:20px;margin-top:20px">
     <h4>STATUS:</h4>
