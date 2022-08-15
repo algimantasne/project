@@ -31,6 +31,10 @@ class Product(models.Model):
 class Supplier(models.Model):
     name = models.CharField('Name', max_length=100)
     description = models.TextField('Description', max_length=2000, default='')
+    address = models.CharField('Address', max_length=100, null=True)
+    phone = models.CharField('Phone', max_length=20, null=True)
+    email_address = models.CharField('Email', max_length=100, null=True)
+
 
     def display_products(self):
         return ', '.join(product.title for product in self.products.all()[:3])
@@ -53,6 +57,7 @@ class Client(models.Model):
     address = models.CharField('Address', max_length=100, null=True)
     phone = models.CharField('Phone', max_length=12, null=True)
     manager = models.ForeignKey('Manager', on_delete=models.SET_NULL, null=True)
+    email_address = models.CharField('Email', max_length=100, null=True)
 
     class Meta:
         ordering = ['client_name']
