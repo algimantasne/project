@@ -11,7 +11,7 @@ class Product(models.Model):
     summary = models.TextField('Summary', max_length=1000, help_text='Product information')
     price = models.CharField('Price, Eur', max_length=5, null=True)
     quantity = models.CharField('Quantity, pcs', max_length=5, null=True)
-    cover = models.ImageField('Cover', upload_to='covers', null=True)
+    cover = models.ImageField('Cover', upload_to='covers', null=True, blank=True)
 
     def display_quantity(self):
         return ', '.join(quantity.name for quantity in self.quantity.all()[:3])
@@ -96,7 +96,6 @@ class Expense(models.Model):
 
 class Manager(models.Model):
     manager_name = models.CharField('Manager name', max_length=100, null=True)
-
     address = models.CharField('Address', max_length=100, null=True)
     phone = models.CharField('Phone', max_length=12, null=True)
 
@@ -109,7 +108,7 @@ class Manager(models.Model):
         return reverse('manager-detail', args=[str(self.id)])
 
     def __str__(self):
-        return f'{self.manager_name}, {self.address}, {self.phone}'
+        return f'{self.manager_name}, {self.address}'
 
 
 
