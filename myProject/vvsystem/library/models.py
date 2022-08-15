@@ -99,6 +99,11 @@ class Manager(models.Model):
     address = models.CharField('Address', max_length=100, null=True)
     phone = models.CharField('Phone', max_length=12, null=True)
 
+    # # Kazkaip reik vadybininku clientu sarasa pasidaryt.
+    # def display_clients(self):
+    #     return ', '.join(client.client_name for client in self.clients.all()[:3])
+    #
+    # display_clients.short_description = 'Clients'
 
     class Meta:
         ordering = ['manager_name']

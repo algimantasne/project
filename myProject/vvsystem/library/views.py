@@ -74,11 +74,12 @@ def search(request):
 
 
 def clients(request):
-    clients = Client.objects.all()
+    paginator = Paginator(Client.objects.all(), 10)
+    page_number = request.GET.get('page')
+    paged_clients = paginator.get_page(page_number)
     context = {
-        'clients': clients
+        'clients': paged_clients
     }
-    print(clients)
     return render(request, 'clients.html', context=context)
 
 def client(request, client_id):
@@ -98,11 +99,12 @@ def manager(request, manager_id):
     return render(request, 'manager.html', {'manager': single_manager})
 
 def sales(request):
-    sales = Sale.objects.all()
+    paginator = Paginator(Sale.objects.all(), 10)
+    page_number = request.GET.get('page')
+    paged_sales = paginator.get_page(page_number)
     context = {
-        'sales': sales
+        'sales': paged_sales
     }
-    print(sales)
     return render(request, 'sales.html', context=context)
 
 def sale(request, sale_id):
@@ -120,5 +122,6 @@ def expenses(request):
 def expense(request, expense_id):
     single_expense = get_object_or_404(Expense, pk=expense_id)
     return render(request, 'expense.html', {'expense': single_expense})
+
 
 

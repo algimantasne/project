@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from . import views
 
@@ -17,5 +17,5 @@ urlpatterns = [
     path('sales/<int:sale_id>', views.sale, name='sale'),
     path('expenses/', views.expenses, name='expenses'),
     path('expenses/<int:expense_id>', views.expense, name='expense'),
-
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
