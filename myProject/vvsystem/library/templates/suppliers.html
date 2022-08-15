@@ -9,7 +9,7 @@
   {% for a in suppliers %}
     <li><a href="{% url 'supplier' a.id %}">{{a.name}}</a></li>
   {% endfor %}
-  <div class="container puslapiai">
+  <div class="container pages">
       <nav aria-label="...">
           {% if suppliers.has_other_pages %}
               <ul class="pagination pagination-sm justify-content-end">

@@ -6,6 +6,6 @@
 <hr>
 <br>
   {% for a in managers %}
-    <li><a href="{% url 'manager' a.id %}">{{a.manager_name}}</a></li>
+    <li><a href="{% url 'manager' a.id %}">{{a.manager_name}}, {{a.address}}</a></li>
   {% endfor %}
 {% endblock %}

@@ -3,7 +3,12 @@
 {% block content %}
     <div class="container sale">
 <br>
-    <h4>{{ sale.order_No }}</h4>
+    <h3>{{ sale.order_No }}</h3>
+<hr>
+    <h5>Client: {{ sale.client_name }}</h5>
+<hr>
+    <h6>{{ sale.product }}: {{ sale.quantity }} pcs</h6>
+<hr>
 
     </div>
 {% endblock %}

@@ -2,10 +2,33 @@
 
 {% block content %}
 <br>
-  <h1>Sales</h1>
+  <h1>Orders</h1>
 <hr>
-<br>
-  {% for a in sales %}
-    <li><a href="{% url 'sale' a.id %}">{{a.order_No}}</a></li>
-  {% endfor %}
+    <ul>
+      {% for a in sales %}
+        <li>
+            <a href="{{ a.id }}">{{a.order_No}}</a>
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="container pages">
+        <nav aria-label="...">
+            {% if sales.has_other_pages %}
+                <ul class="pagination pagination-sm justify-content-end">
+                    {% for i in sales.paginator.page_range %}
+                        {% if sales.number == i %}
+                            <li class="page-item active">
+                                <a class="page-link" href>{{ i }}</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </nav>
+    </div>
+
 {% endblock %}

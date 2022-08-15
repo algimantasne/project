@@ -3,11 +3,15 @@
 {% block content %}
     <div class="container manager">
 <br>
-    <h4>{{ manager.manager_name }}</h4>
+    <h3>{{ manager.manager_name }}</h3>
+    <h6><strong>Address:</strong> {{ manager.address }}</h6>
 <hr>
-    <h5>Clients list:</h5>
-<br>
+    <h5>{{ manager.manager_name }} Clients list:</h5>
+    {% for i in manager.clients.all %}
+       <li>{{ i.client_name }}</li>
+<!--       <li><a href="{{ i.id }}">{{ i.client_name }}</a></li>-->
 
+    {% endfor %}
 
     </div>
 {% endblock %}
