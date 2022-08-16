@@ -64,7 +64,7 @@ class ProductDetailView(generic.DetailView):
     template_name = 'product_detail.html'
 
 
-from django.db.models import Q
+# from django.db.models import Q
 
 def search(request):
 
