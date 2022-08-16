@@ -1,18 +1,42 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container client">
-<br>
-    <h3>{{ client.client_name }}</h3>
+
+<style>
+    h6 {
+     color: white;
+    }
+
+    h3 {
+    color: orange;
+    }
+
+    h7 {
+    color: yellow;
+    }
+
+    p {
+    color: orange;
+    }
+</style>
+
+  <div class="container client">
+  <br>
+  <h3>{{ client.client_name }}</h3>
   <h6><strong>Address:</strong> {{ client.address }}</h6>
   <h6><strong>Email:</strong> {{ client.email_address }}</h6>
   <h6><strong>Phone:</strong> {{ client.phone }}</h6>
-<hr>
-  <p><strong>Client served by manager:</strong> {{ client.manager }}</p>
-<hr>
+  <hr>
+  <h7>Client served by manager: {{ client.manager }}</h7>
+  <hr>
 
-  <p><strong>Orders:</strong> **** </p>
+  <h6><strong>Orders:</strong></h6>
 
-
-    </div>
+  {% for i in client.sales.all %}
+     <li>
+       <a href="{% url 'sale' i.id %}">{{ i.order_No }}</a>
+     </li>
+  {% endfor %}
+  </div>
 {% endblock %}
+

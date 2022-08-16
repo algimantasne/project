@@ -1,11 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<style>
+
+    h1 {
+    color: orange;
+    }
+
+    li {
+    color: orange;
+    }
+
+</style>
+
 <br>
   <h1>Managers</h1>
 <hr>
-<br>
+
   {% for a in managers %}
-    <li><a href="{% url 'manager' a.id %}">{{a.manager_name}}, {{a.address}}</a></li>
+
+  <li><a href="{% url 'manager' a.id %}">{{a.manager_name}}, {{a.address}}</a></li>
+<hr>
   {% endfor %}
 {% endblock %}

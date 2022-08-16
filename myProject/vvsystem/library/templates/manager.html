@@ -1,17 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<style>
+    h6 {
+     color: white;
+    }
+
+    h3 {
+    color: orange;
+    }
+
+    h4 {
+    color: orange;
+    }
+
+</style>
+
     <div class="container manager">
 <br>
     <h3>{{ manager.manager_name }}</h3>
+<br>
     <h6><strong>Address:</strong> {{ manager.address }}</h6>
+<br>
+    <h6><strong>Phone:</strong> {{ manager.phone }}</h6>
+<br>
+    <h6><strong>Email:</strong> {{ manager.email_address }}</h6>
 <hr>
-    <h5>{{ manager.manager_name }} Clients list:</h5>
-    {% for i in manager.clients.all %}
-       <li>{{ i.client_name }}</li>
-<!--       <li><a href="{{ i.id }}">{{ i.client_name }}</a></li>-->
-
-    {% endfor %}
-
     </div>
+    <h6><strong>Clients:</strong></h6>
+
+      {% for i in manager.clients.all %}
+         <li>
+           <a href="{% url 'client' i.id %}">{{ i.client_name }}</a>
+         </li>
+      {% endfor %}
+<!--    </div>-->
 {% endblock %}
