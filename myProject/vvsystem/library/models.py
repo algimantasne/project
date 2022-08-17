@@ -51,9 +51,11 @@ class Client(models.Model):
 
 class Sale(models.Model):
     order_No = models.CharField('Order_No', max_length=200)
+    date = models.DateTimeField('Date', null=True)
     client_name = models.ForeignKey('Client', on_delete=models.SET_NULL, related_name='sales', null=True)
     product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True)
     quantity = models.CharField('Quantity, pcs', max_length=5, null=True)
+
 
     def __str__(self):
         return str(self.order_No)
@@ -77,12 +79,6 @@ class Manager(models.Model):
     address = models.CharField('Address', max_length=100, null=True)
     phone = models.CharField('Phone', max_length=12, null=True)
     email_address = models.CharField('Email', max_length=100, null=True)
-
-    # # Kazkaip reik vadybininku clientu sarasa pasidaryt.
-    # def display_clients(self):
-    #     return ', '.join(client.client_name for client in self.clients.all()[:3])
-    #
-    # display_clients.short_description = 'Clients'
 
     class Meta:
         ordering = ['manager_name']

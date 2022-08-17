@@ -28,6 +28,11 @@ class ProductInstanceAdmin(admin.ModelAdmin):
         ('General', {'fields': ['product']}),
         ('Availability', {'fields': ['status']}),
     )
+#
+# class SaleAdmin(admin.ModelAdmin):
+#     model = Sale
+#     list_display = ['date', 'product', 'quantity']
+#     list_editable = ['date', 'product', 'quantity']
 
 
 admin.site.register(Supplier, SupplierAdmin)
