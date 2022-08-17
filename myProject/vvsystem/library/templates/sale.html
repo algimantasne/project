@@ -7,7 +7,7 @@
      color: white;
     }
 
-    h3 {
+    th {
     color: orange;
     }
 
@@ -17,14 +17,31 @@
 
 </style>
 
-    <div class="container sale">
-<br>
-    <h3>{{ sale.order_No }}</h3>
-<hr>
-    <h5>Client: {{ sale.client_name }}</h5>
-<hr>
-    <h6>{{ sale.product }}: {{ sale.quantity }} pcs</h6>
-<hr>
+<!--    <div class="container sale">-->
+<!--<br>-->
+<!--    <h4>{{ sale.order_No }}, {{sale.date}}</h4>-->
+<!--<hr>-->
+<!--    <h5>Client: {{ sale.client_name }}</h5>-->
+<!--<hr>-->
+<!--    <h6>{{ sale.product }}  &#45;&#45; {{ sale.quantity }} pcs</h6>-->
+<!--<hr>-->
 
-    </div>
+<!--    </div>-->
+
+<div class="container sale">
+    <table class="table">
+      <tbody>
+      <br>
+        <tr>
+          <th scope="row">{{ sale.order_No }}</th>
+          <td>{{sale.date}}</td>
+          <td>{{ sale.product }}</td>
+          <td>{{ sale.quantity }} pcs</td>
+          <td>{{ sale.total }}</td>
+        </tr>
+
+      </tbody>
+    </table>
+</div>
+
 {% endblock %}
