@@ -3,7 +3,7 @@
 {% block content %}
 
 <style>
-    h5 {
+    td {
      color: white;
     }
 
@@ -30,14 +30,27 @@
 
 <div class="container sale">
     <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Order No</th>
+        <th scope="col">Client Name</th>
+        <th scope="col">Order Date</th>
+        <th scope="col">Product</th>
+        <th scope="col">Quantity, pcs</th>
+        <th scope="col">Price, Eur/pcs</th>
+        <th scope="col">Total Price, Eur</th>
+      </tr>
+      </thead>
       <tbody>
       <br>
         <tr>
           <th scope="row">{{ sale.order_No }}</th>
+          <td><strong>{{sale.client_name}}</strong></td>
           <td>{{sale.date}}</td>
           <td>{{ sale.product }}</td>
-          <td>{{ sale.quantity }} pcs</td>
-          <td>{{ sale.total }}</td>
+          <td>{{ sale.quantity }}</td>
+          <td>{{ sale.price }} </td>
+          <td>{% widthratio sale.quantity 1 sale.price %}</td>
         </tr>
 
       </tbody>
