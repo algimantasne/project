@@ -53,7 +53,8 @@ class Sale(models.Model):
     order_No = models.CharField('Order_No', max_length=200)
     date = models.DateTimeField('Date', null=True)
     client_name = models.ForeignKey('Client', on_delete=models.SET_NULL, related_name='sales', null=True)
-    product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    price = models.CharField('Price, Eur', max_length=5, null=True)
     quantity = models.CharField('Quantity, pcs', max_length=5, null=True)
 
 

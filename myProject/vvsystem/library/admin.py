@@ -30,15 +30,13 @@ class ProductInstanceAdmin(admin.ModelAdmin):
     )
 #
 # class SaleAdmin(admin.ModelAdmin):
-#     model = Sale
-#     list_display = ['date', 'product', 'quantity']
-#     list_editable = ['date', 'product', 'quantity']
-
+#     list_display = ['order_No', 'date', 'product', 'quantity']
 
 admin.site.register(Supplier, SupplierAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Client, ClientAdmin)
 admin.site.register(Sale)
+# admin.site.register(Sale, SaleAdmin)
 admin.site.register(Expense)
 admin.site.register(Manager)
 admin.site.register(ProductInstance, ProductInstanceAdmin)
