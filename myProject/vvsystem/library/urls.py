@@ -18,4 +18,7 @@ urlpatterns = [
     path('orders/', views.orders, name='orders'),
     path('orders/<int:order_id>', views.order, name='order'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('newOrders/', views.newOrders, name='newOrders'),
+    path('newOrders/<int:newOrder_id>', views.newOrder, name='newOrder'),
+
 ]

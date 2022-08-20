@@ -66,13 +66,25 @@ class Sale(models.Model):
 
 
 class Order(models.Model):
-    amount = models.CharField('Monthly expenses', max_length=7)
+    numb = models.CharField('Numb', max_length=20, null=True)
 
     def __str__(self):
-        return str(self.amount)
+        return str(self.numb)
 
     def get_absolute_url(self):
         return reverse('order-detail', args=[str(self.id)])
+
+
+class NewOrder(models.Model):
+    newOrder_No = models.CharField('NewOrder_No', max_length=200)
+    description = models.TextField('Description', max_length=2000, default='')
+
+    def __str__(self):
+        return str(self.newOrder_No)
+
+    def get_absolute_url(self):
+        return reverse('neworder-detail', args=[str(self.id)])
+
 
 
 class Manager(models.Model):

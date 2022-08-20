@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Supplier, Product, Client, Sale, Order, Manager, ProductInstance
+from .models import Supplier, Product, Client, Sale, Order, Manager, ProductInstance, NewOrder
 
 class ProductInstanceInline(admin.TabularInline):
     model = ProductInstance
@@ -17,6 +17,12 @@ class ClientAdmin(admin.ModelAdmin):
 
 class SupplierAdmin(admin.ModelAdmin):
     list_display = ['name']
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['numb']
+
+class NewOrderAdmin(admin.ModelAdmin):
+    list_display = ['newOrder_No']
 
 class ProductInstanceAdmin(admin.ModelAdmin):
     list_display = ('product', 'status')
@@ -37,6 +43,7 @@ admin.site.register(Product, ProductAdmin)
 admin.site.register(Client, ClientAdmin)
 admin.site.register(Sale)
 # admin.site.register(Sale, SaleAdmin)
-admin.site.register(Order)
+admin.site.register(Order, OrderAdmin)
 admin.site.register(Manager)
 admin.site.register(ProductInstance, ProductInstanceAdmin)
+admin.site.register(NewOrder, NewOrderAdmin)
