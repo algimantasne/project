@@ -15,7 +15,7 @@ urlpatterns = [
     path('managers/<int:manager_id>', views.manager, name='manager'),
     path('sales/', views.sales, name='sales'),
     path('sales/<int:sale_id>', views.sale, name='sale'),
-    path('expenses/', views.expenses, name='expenses'),
-    path('expenses/<int:expense_id>', views.expense, name='expense'),
+    path('orders/', views.orders, name='orders'),
+    path('orders/<int:order_id>', views.order, name='order'),
     path('accounts/', include('django.contrib.auth.urls')),
 ]

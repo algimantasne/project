@@ -1,5 +1,5 @@
 # from django.http import HttpResponse
-from .models import Product, Supplier, Client, Sale, Expense, Manager
+from .models import Product, Supplier, Client, Sale, Order, Manager
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.core.paginator import Paginator
@@ -14,7 +14,7 @@ def index(request):
     num_clients = Client.objects.count()
     num_managers = Manager.objects.count()
     num_sales = Sale.objects.count()
-    num_expenses = Expense.objects.count()
+    num_orders = Order.objects.count()
 
     # perduodame informaciją į šabloną žodyno pavidale:
     context = {
@@ -23,7 +23,7 @@ def index(request):
         'num_clients': num_clients,
         'num_managers': num_managers,
         'num_sales': num_sales,
-        'num_expenses': num_expenses,
+        'num_orders': num_orders,
     }
 
     # renderiname index.html, su duomenimis kintamąjame context
@@ -111,17 +111,17 @@ def sale(request, sale_id):
     single_sale = get_object_or_404(Sale, pk=sale_id)
     return render(request, 'sale.html', {'sale': single_sale})
 
-def expenses(request):
-    expenses = Expense.objects.all()
+def orders(request):
+    orders = Order.objects.all()
     context = {
-        'expenses': expenses
+        'orders': orders
     }
-    print(expenses)
-    return render(request, 'expenses.html', context=context)
+    print(orders)
+    return render(request, 'orders.html', context=context)
 
-def expense(request, expense_id):
-    single_expense = get_object_or_404(Expense, pk=expense_id)
-    return render(request, 'expense.html', {'expense': single_expense})
+def order(request, order_id):
+    single_order = get_object_or_404(Order, pk=order_id)
+    return render(request, 'order.html', {'order': single_order})
 
 
 

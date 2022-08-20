@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 import uuid
+from django.forms import ModelForm
 
 
 class Product(models.Model):
@@ -57,7 +58,6 @@ class Sale(models.Model):
     price = models.CharField('Price, Eur', max_length=5, null=True)
     quantity = models.CharField('Quantity, pcs', max_length=5, null=True)
 
-
     def __str__(self):
         return str(self.order_No)
 
@@ -65,14 +65,14 @@ class Sale(models.Model):
         return reverse('sale-detail', args=[str(self.id)])
 
 
-class Expense(models.Model):
+class Order(models.Model):
     amount = models.CharField('Monthly expenses', max_length=7)
 
     def __str__(self):
         return str(self.amount)
 
     def get_absolute_url(self):
-        return reverse('expense-detail', args=[str(self.id)])
+        return reverse('order-detail', args=[str(self.id)])
 
 
 class Manager(models.Model):
