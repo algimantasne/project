@@ -33,36 +33,25 @@
 
 
   <nav class="navbar navbar-inverse navbar-blue">
-      <div class="container-fluid">
-<!--          logo-->
-          <div class="nav justify-content-end">
-
-<!--              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--                  <span class="navbar-toggler-icon">#</span>-->
-<!--              </button>-->
-              <a class="navbar-brand">BD SYSTEM</a>
-              <a class="navbar-brand" href="{% url 'index' %}">Home</a>
-              <a class="navbar-brand" href="{% url 'products' %}">Products</a>
-<!--              <a class="navbar-brand" href="{% url 'suppliers' %}">Suppliers</a>-->
-              <a class="navbar-brand" href="{% url 'clients' %}">Clients</a>
-<!--              <a class="navbar-brand" href="{% url 'managers' %}">Managers</a>-->
-<!--              <a class="navbar-brand" href="{% url 'sales' %}">Sales</a>-->
-<!--              <a class="navbar-brand" href="{% url 'expenses' %}">Expenses</a>-->
-              <a class="navbar-brand">
+      <!--          logo-->
+<!--      <a class="navbar-brand">BD SYSTEM</a>-->
+      <div class="container-fluid justify-content-end">
+          <div class="nav">
+              <li class="nav-item"><a class="navbar-brand" href="{% url 'index' %}">Home</a></li>
+              <li class="nav-item"><a class="navbar-brand" href="{% url 'products' %}">Products</a></li>
+              <li class="nav-item"><a class="navbar-brand" href="{% url 'clients' %}">Clients</a></li>
+              <li class="nav-item"><a class="navbar-brand">
                 <form action="{% url 'search' %}" method="get" class="form-inline my-2 my-md-0">
-                  <input name="query" class="form-control" type="text" placeholder="Search...">
-                <button type="submit" class="btn btn-info">Submit</button>
+                  <input name="query" class="form-control-sm" type="text" placeholder="Search product...">
+                <button type="submit" class="btn btn-info btn-sm">Submit</button>
                 </form>
-              </a>
-
-              <ul class="navbar-nav ml-auto navbar-brand">
-                  {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link" href="#">{{ user.get_username }}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Log out</a></li>
-                  {% else %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Log in</a></li>
-                  {% endif %}
-              </ul>
+              </a></li>
+              {% if user.is_authenticated %}
+              <li class="nav-item"><a class="nav-link" href="#">{{ user.get_username }}</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Log out</a></li>
+              {% else %}
+              <li class="nav-item"><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Log in</a></li>
+              {% endif %}
           </div>
       </div>
   </nav>
