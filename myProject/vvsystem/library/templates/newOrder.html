@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+    <div class="container newOrder">
+    <h4>{{ newOrder.newOrder_id }}</h4>
+    <hr/>
+
+    </br>
+    <h5>Mes turime šias {{ newOrder.newOrder_id  }} knygas:</h5>
+    {% for i in newOrder %}
+    {% endfor %}
+    </div>
+{% endblock %}

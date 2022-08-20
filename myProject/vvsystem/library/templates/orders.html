@@ -3,26 +3,161 @@
 {% block content %}
 
 <style>
-
     h1 {
     color: orange;
     }
-
     li {
     color: orange;
     }
-
 </style>
 
 <br>
   <h1>Orders</h1>
 <hr>
 <br>
-  {% for a in expenses %}
-    <li><a href="{% url 'expense' a.id %}">{{a.amount}}</a></li>
-  {% endfor %}
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">Product</th>
+      <th scope="col">Client Name</th>
+      <th scope="col">Quantity, pcs</th>
+      <th scope="col">Price, Eur/pcs</th>
+      <th scope="col">Total Price, Eur</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>
+        <div class="form-group">
+          <select class="form-control">
+            <option selected>Choose...</option>
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <select class="form-control">
+            <option selected>Choose...</option>
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>
+        <div class="form-group">
+          <select class="form-control">
+            <option selected>Choose...</option>
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <select class="form-control">
+            <option selected>Choose...</option>
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>
+        <div class="form-group">
+          <select class="form-control">
+            <option selected>Choose...</option>
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <select class="form-control">
+            <option selected>Choose...</option>
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>
+        <div class="form-group">
+          <select class="form-control">
+            <option selected>Choose...</option>
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <select class="form-control">
+            <option selected>Choose...</option>
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control">
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
-       <button type="button" class="btn btn-light">New Order</button>
 
 {% endblock %}
