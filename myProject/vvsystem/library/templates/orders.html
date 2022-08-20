@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+    h1 {
+    color: orange;
+    }
+
+    li {
+    color: orange;
+    }
+
+</style>
+
+<br>
+  <h1>Orders</h1>
+<hr>
+<br>
+  {% for a in expenses %}
+    <li><a href="{% url 'expense' a.id %}">{{a.amount}}</a></li>
+  {% endfor %}
+
+
+       <button type="button" class="btn btn-light">New Order</button>
+
+{% endblock %}
