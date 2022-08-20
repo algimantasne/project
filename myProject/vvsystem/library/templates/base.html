@@ -19,28 +19,23 @@
     .navbar-brand {
         color: white !important;
     }
-
     .search {
         max-width: 500px;
         width: 100%;
     }
-
     body {
         background: grey url("img/background_grey.jpg") no-repeat;
     }
-
     li a {
         color: white;
     }
-
-
 </style>
 
 
   <nav class="navbar navbar-inverse navbar-blue">
       <div class="container-fluid">
 <!--          logo-->
-          <div class="navbar-header">
+          <div class="nav justify-content-end">
 
 <!--              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
 <!--                  <span class="navbar-toggler-icon">#</span>-->
@@ -53,11 +48,10 @@
 <!--              <a class="navbar-brand" href="{% url 'managers' %}">Managers</a>-->
 <!--              <a class="navbar-brand" href="{% url 'sales' %}">Sales</a>-->
 <!--              <a class="navbar-brand" href="{% url 'expenses' %}">Expenses</a>-->
-
               <a class="navbar-brand">
                 <form action="{% url 'search' %}" method="get" class="form-inline my-2 my-md-0">
                   <input name="query" class="form-control" type="text" placeholder="Search...">
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-info">Submit</button>
                 </form>
               </a>
 
@@ -69,8 +63,6 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Log in</a></li>
                   {% endif %}
               </ul>
-
-
           </div>
       </div>
   </nav>
@@ -87,7 +79,7 @@
                 <li><a href="{% url 'managers' %}">Managers</a></li>
                 <li><a href="{% url 'sales' %}">Orders</a></li>
                 <li><a href="{% url 'expenses' %}">Expenses</a></li>
-                <hr/>
+<!--                <hr/>-->
 <!--                <li>-->
 <!--                    <form action="{% url 'search' %}" method="get" class="form-inline my-2 my-md-0">-->
 <!--                        <input name="query" class="form-control" type="text" placeholder="Search">-->
