@@ -12,5 +12,7 @@
 <br>
   <h1>New Orders</h1>
 <hr>
-
+{% for a in newOrders %}
+    <li><a href="{% url 'newOrder' a.id %}">{{a.newOrder_No}}</a></li>
+{% endfor %}
 {% endblock %}
