@@ -55,7 +55,7 @@ class Sale(models.Model):
     date = models.DateTimeField('Date', null=True)
     client_name = models.ForeignKey('Client', on_delete=models.SET_NULL, related_name='sales', null=True)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    price = models.CharField('Price, Eur', max_length=5, null=True)
+    price = models.CharField('Price, Eur/pcs', max_length=5, null=True)
     quantity = models.CharField('Quantity, pcs', max_length=5, null=True)
 
     def __str__(self):
@@ -65,8 +65,20 @@ class Sale(models.Model):
         return reverse('sale-detail', args=[str(self.id)])
 
 
+
+    def total_price(self):
+        return round(float(self.quantity) * float(self.price))
+
+
+
 class Order(models.Model):
     numb = models.CharField('Numb', max_length=20, null=True)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    price = models.CharField('Price, Eur', max_length=5, null=True)
+    quantity = models.CharField('Quantity, pcs', max_length=5, null=True)
+    client_name = models.ForeignKey('Client', on_delete=models.SET_NULL, null=True)
+
+
 
     def __str__(self):
         return str(self.numb)
@@ -120,7 +132,7 @@ class ProductInstance(models.Model):
         choices=LOAN_STATUS,
         blank=True,
         default='a',
-        help_text='Statusas',
+        help_text='Status',
     )
     #
     # class Meta:

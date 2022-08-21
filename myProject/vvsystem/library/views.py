@@ -1,5 +1,5 @@
 # from django.http import HttpResponse
-from .models import Product, Supplier, Client, Sale, Order, Manager
+from .models import Product, Supplier, Client, Sale, Order, Manager, NewOrder
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.core.paginator import Paginator
@@ -15,6 +15,7 @@ def index(request):
     num_managers = Manager.objects.count()
     num_sales = Sale.objects.count()
     num_orders = Order.objects.count()
+    num_newOrders = NewOrder.objects.count()
 
     # perduodame informaciją į šabloną žodyno pavidale:
     context = {
@@ -24,6 +25,7 @@ def index(request):
         'num_managers': num_managers,
         'num_sales': num_sales,
         'num_orders': num_orders,
+        'num_newOrders': num_newOrders,
     }
 
     # renderiname index.html, su duomenimis kintamąjame context
@@ -116,12 +118,19 @@ def orders(request):
     context = {
         'orders': orders
     }
-    print(orders)
     return render(request, 'orders.html', context=context)
 
 def order(request, order_id):
     single_order = get_object_or_404(Order, pk=order_id)
     return render(request, 'order.html', {'order': single_order})
 
+def newOrders(request):
+    newOrders = NewOrder.objects.all()
+    context = {
+        'newOrders': newOrders
+    }
+    return render(request, 'newOrders.html', context=context)
 
-
+def newOrder(request, newOrder_id):
+    single_newOrder = get_object_or_404(Order, pk=newOrder_id)
+    return render(request, 'newOrder.html', {'newOrder': single_newOrder})
