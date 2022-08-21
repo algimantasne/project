@@ -6,130 +6,145 @@
     h1 {
     color: orange;
     }
-    li {
+    h3 {
     color: orange;
     }
 </style>
 
 <br>
-  <h1>Orders</h1>
+  <h1>Orders form</h1>
 <hr>
 <br>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">No.</th>
-      <th scope="col">Product</th>
-      <th scope="col">Quantity, pcs</th>
-      <th scope="col">Price, Eur/pcs</th>
-      <th scope="col">Total Price, Eur</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>
-        <div class="form-group">
-          <select class="form-control">
-            <option selected>Choose...</option>
-            <option>1</option>
-          </select>
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <input type="text" class="form-control">
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <input type="text" class="form-control">
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <input type="text" class="form-control">
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>
-        <div class="form-group">
-          <select class="form-control">
-            <option selected>Choose...</option>
-          </select>
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <input type="text" class="form-control">
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <input type="text" class="form-control">
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <input type="text" class="form-control">
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>
-        <div class="form-group">
-          <select class="form-control">
-            <option selected>Choose...</option>
-          </select>
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <input type="text" class="form-control">
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <input type="text" class="form-control">
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <input type="text" class="form-control">
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>
-        <div class="form-group">
-          <select class="form-control">
-            <option selected>Choose...</option>
-          </select>
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <input type="text" class="form-control">
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <input type="text" class="form-control">
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <input type="text" class="form-control">
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Client:</span>
+  </div>
+  <input type="text" class="form-control">
+</div>
+<br>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Order No.:</span>
+  </div>
+  <input type="text" class="form-control">
+</div>
+<br>
+<div class="container order">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Product</th>
+        <th scope="col">Quantity, pcs</th>
+        <th scope="col">Price, Eur/pcs</th>
+        <th scope="col">Total Price, Eur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>
+          <div class="form-group">
+            <select class="form-control">
+              <option selected>Choose...</option>
+              <option>{{ order.product.title }}</option>
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control">
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control">
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>
+          <div class="form-group">
+            <select class="form-control">
+              <option selected>Choose...</option>
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control">
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control">
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>
+          <div class="form-group">
+            <select class="form-control">
+              <option selected>Choose...</option>
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control">
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control">
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>
+          <div class="form-group">
+            <select class="form-control">
+              <option selected>Choose...</option>
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control">
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control">
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control">
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+      <button type="submit" class="btn btn-light btn-sm">Submit</button>
 
-
-
+</div>
 {% endblock %}
