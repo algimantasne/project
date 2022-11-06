@@ -38,6 +38,7 @@ class ProductInstanceAdmin(admin.ModelAdmin):
 # class SaleAdmin(admin.ModelAdmin):
 #     list_display = ['order_No', 'date', 'product', 'quantity']
 
+
 admin.site.register(Supplier, SupplierAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Client, ClientAdmin)
